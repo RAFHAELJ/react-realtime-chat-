@@ -2,14 +2,16 @@ import { Button, Label, TextInput } from 'flowbite-react';
 import { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { socket } from '../websocket';
-import { useDispatch } from 'react-redux';
+import { useDispatch ,useSelector} from 'react-redux';
 import { updateUser } from '../redux/userSlice';
+
 
 export function AuthenticationForm({ nome }: { nome: string }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector((state: any) => state.user);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,7 +25,7 @@ export function AuthenticationForm({ nome }: { nome: string }) {
       // Autenticação bem-sucedida
       // Emitir evento para entrar na sala de chat
       socket?.emit('join', {
-        room: 'room1', // Sala padrão ou sala de sua escolha
+        room: user.room, // Sala padrão ou sala de sua escolha
         nome: nome,
       });
       
@@ -31,7 +33,7 @@ export function AuthenticationForm({ nome }: { nome: string }) {
       dispatch(
         updateUser({
           nome: nome,
-          room: 'room1', // Sala padrão ou sala de sua escolha
+          room: user.room, // Sala padrão ou sala de sua escolha
         })
       );
 
