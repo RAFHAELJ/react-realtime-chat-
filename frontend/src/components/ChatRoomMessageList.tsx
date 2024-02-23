@@ -26,7 +26,7 @@ export function ChatRoomMessageList() {
   }, [messageList]);
 
   return (
-    <div className="max-w-md w-full flex flex-col gap-3 overflow-y-auto" ref={messageListRef}style={{ background: 'lightgreen', border: '0px solid black', height: '55vh', width: '50vw' }}>
+    <div className="max-w-md w-full flex flex-col gap-3 overflow-y-auto" ref={messageListRef}style={{ background: 'lightgreen', border: '0px solid black', height: '79vh', width: '50vw' }}>
       {messageList.slice(0).reverse().map((message, index) => ( // Inverte a ordem das mensagens e, em seguida, renderiza
         <ChatRoomMessage
           room={message.room}
