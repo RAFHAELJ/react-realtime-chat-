@@ -55,9 +55,9 @@ export function EntryRoomForm() {
           value={room}
           onChange={(e) => setRoom(e.target.value)}
         >
-          <option value="room1">Room 1</option>
-          <option value="room2">Room 2</option>
-          <option value="room3">Room 3</option>
+          <option value="room1">Sala 1</option>
+          <option value="room2">Sala 2</option>
+          <option value="room3">Sala 3</option>
         </select>
       </div>
       <div className="col-span-2 text-right flex justify-end">
